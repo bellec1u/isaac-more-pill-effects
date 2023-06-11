@@ -1,0 +1,4 @@
+<pocketitems>
+    <pilleffect name="Damage up!" description="You're getting stronger!" class="3+" mimiccharge="12"/>
+    <pilleffect name="Damage down" description="You're getting weaker" class="3-" mimiccharge="4"/>
+</pocketitems>
