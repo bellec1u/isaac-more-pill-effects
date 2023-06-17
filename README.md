@@ -5,3 +5,4 @@ Mod created for the game "The Binding of Isaac: Rebirth" which adds several new 
 ## Pills added
 
 - Damage up: increase base damage
+- Damage down: reduce base damage

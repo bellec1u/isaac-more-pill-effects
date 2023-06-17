@@ -40,13 +40,27 @@ end
 
 mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, mod.cacheUpdate)
 
--- Damage up pill effect
+-- global methods
 
-function mod:damageUpPillEffect(_, player, _)
-    self.storage[player:GetName()].damagePillMultiplier = self.storage[player:GetName()].damagePillMultiplier + 1
+function mod:damagePillEffect(player, pillEffect)
+    self.storage[player:GetName()].damagePillMultiplier = self.storage[player:GetName()].damagePillMultiplier + pillEffect
 
     player:AddCacheFlags(CacheFlag.CACHE_DAMAGE)
     player:EvaluateItems()
 end
 
+-- Damage up pill effect
+
+function mod:damageUpPillEffect(_, player, _)
+    self:damagePillEffect(player, 1)
+end
+
 mod:AddCallback(ModCallbacks.MC_USE_PILL, mod.damageUpPillEffect, Isaac.GetPillEffectByName("Damage up!"))
+
+-- Damage down pill effect
+
+function mod:damageDownPillEffect(_, player, _)
+    self:damagePillEffect(player, -1)
+end
+
+mod:AddCallback(ModCallbacks.MC_USE_PILL, mod.damageDownPillEffect, Isaac.GetPillEffectByName("Damage down"))
